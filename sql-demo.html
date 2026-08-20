@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Schema - Travel Reservation</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .schema-container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .schema-table {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .schema-table h3 {
+      margin-top: 0;
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 10px;
+    }
+    .table-structure {
+      font-family: monospace;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+    .table-structure pre {
+      margin: 0;
+    }
+    .description {
+      color: #666;
+      font-style: italic;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav">
+      <a class="logo" href="index.html">🚌 SK <span>Tours & Travel</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a id="loginLink" href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+      <div class="auth-box">
+        <div id="authEmail" class="auth-email" style="display: none;"></div>
+        <a id="logoutLink" class="auth-logout" href="#" onclick="event.preventDefault(); logout();" style="display: none;">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container page">
+    <div class="schema-container">
+      <h1>Database Schema - Travel Reservation System</h1>
+      <p>Below is the complete database structure used in the travel reservation system.</p>
+
+      <!-- Users Table -->
+      <div class="schema-table">
+        <h3>📋 Users Table</h3>
+        <p class="description">Stores user account information</p>
+        <div class="table-structure">
+          <pre>
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
+  phone VARCHAR(20),
+  role ENUM('user', 'admin') DEFAULT 'user',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+          </pre>
+        </div>
+      </div>
+
+      <!-- Buses Table -->
+      <div class="schema-table">
+        <h3>🚌 Buses Table</h3>
+        <p class="description">Stores bus information</p>
+        <div class="table-structure">
+          <pre>
+CREATE TABLE buses (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  type VARCHAR(100) NOT NULL,
+  seats INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+          </pre>
+        </div>
+      </div>
+
+      <!-- Routes Table -->
+      <div class="schema-table">
+        <h3>🗺️ Routes Table</h3>
+        <p class="description">Stores route information (bus journey details)</p>
+        <div class="table-structure">
+          <pre>
+CREATE TABLE routes (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  bus_id INT NOT NULL,
+  from_city VARCHAR(100) NOT NULL,
+  to_city VARCHAR(100) NOT NULL,
+  departure_time TIME NOT NULL,
+  arrival_time TIME,
+  price DECIMAL(10, 2) NOT NULL,
+  seats_available INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (bus_id) REFERENCES buses(id)
+);
+          </pre>
+        </div>
+      </div>
+
+      <!-- Bookings Table -->
+      <div class="schema-table">
+        <h3>🎫 Bookings Table</h3>
+        <p class="description">Stores passenger booking information</p>
+        <div class="table-structure">
+          <pre>
+CREATE TABLE bookings (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  route_id INT NOT NULL,
+  seat_number INT NOT NULL,
+  status ENUM('confirmed', 'cancelled') DEFAULT 'confirmed',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (route_id) REFERENCES routes(id)
+);
+          </pre>
+        </div>
+      </div>
+
+      <!-- Sample Data -->
+      <div class="schema-table">
+        <h3>📝 Sample Demo Data</h3>
+        <p class="description">When using demo mode (localStorage), the system initializes with sample data:</p>
+        
+        <h4>Sample Users:</h4>
+        <div class="table-structure">
+          <pre>
+User: user@example.com / Password: user123 (Regular User)
+Admin: admin@example.com / Password: admin123 (Admin)
+          </pre>
+        </div>
+
+        <h4>Sample Buses:</h4>
+        <div class="table-structure">
+          <pre>
+1. Express Bus A - AC - 50 seats
+2. Sleeper Bus B - Sleeper - 40 seats
+3. Semi-Sleeper C - Semi-Sleeper - 45 seats
+          </pre>
+        </div>
+
+        <h4>Sample Routes:</h4>
+        <div class="table-structure">
+          <pre>
+1. Mumbai → Bangalore (Express Bus A) - ₹1200
+2. Mumbai → Delhi (Sleeper Bus B) - ₹2000
+3. Bangalore → Hyderabad (Semi-Sleeper C) - ₹800
+          </pre>
+        </div>
+      </div>
+
+      <div style="background: #e7f3ff; padding: 15px; border-radius: 8px; margin-top: 20px;">
+        <strong>Note:</strong> In demo mode, all data is stored in browser localStorage. In API mode, data is stored in MySQL database. 
+        To view the actual database schema, check <code>backend/database.sql</code> file.
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>

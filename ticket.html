@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Ticket</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ticket-container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 30px;
+      background: white;
+      border: 2px solid #007bff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .ticket-header {
+      text-align: center;
+      border-bottom: 2px dashed #007bff;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    .ticket-header h2 {
+      margin: 0;
+      color: #007bff;
+    }
+    .ticket-content {
+      padding: 15px 0;
+    }
+    .ticket-section {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    .ticket-section h3 {
+      margin: 0 0 10px 0;
+      color: #333;
+      font-size: 16px;
+    }
+    .ticket-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .ticket-row .label {
+      font-weight: bold;
+      color: #666;
+    }
+    .ticket-row .value {
+      color: #333;
+    }
+    .ticket-footer {
+      text-align: center;
+      padding-top: 15px;
+      border-top: 2px dashed #007bff;
+      margin-top: 15px;
+    }
+    .confirmed {
+      color: #28a745;
+      font-weight: bold;
+    }
+    .cancelled {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    @media print {
+      body {
+        background: white;
+      }
+      .btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav">
+      <a class="logo" href="index.html">🚌 SK <span>Tours & Travel</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a id="loginLink" href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+      <div class="auth-box">
+        <div id="authEmail" class="auth-email" style="display: none;"></div>
+        <a id="logoutLink" class="auth-logout" href="#" onclick="event.preventDefault(); logout();" style="display: none;">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container page">
+    <div id="ticket"></div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/ticket.js"></script>
+</body>
+
+</html>

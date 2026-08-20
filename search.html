@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Routes - Travel Reservation</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/search.css">
+</head>
+
+<body>
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav">
+      <a class="logo" href="index.html">🚌 SK <span>Tours & Travel</span></a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a id="loginLink" href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+      <div class="auth-box">
+        <div id="authEmail" class="auth-email" style="display: none;"></div>
+        <a id="logoutLink" class="auth-logout" href="#" onclick="event.preventDefault(); logout();" style="display: none;">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container page">
+    <!-- Search Section -->
+    <section class="search-container">
+      <h2>Search Routes</h2>
+      <div id="msg"></div>
+
+      <form class="search-form">
+        <input type="text" id="from" placeholder="From City">
+        <input type="text" id="to" placeholder="To City">
+        <button type="button">Search</button>
+      </form>
+    </section>
+
+    <!-- Routes List -->
+    <section class="search-container" style="margin-top: 30px;">
+      <h3>Available Routes</h3>
+      <div id="routesList"></div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/search.js"></script>
+</body>
+
+</html>

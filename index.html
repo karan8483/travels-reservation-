@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SK Tours and Travel - Book Your Journey</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav">
+      <a class="logo" href="index.html">🚌 SK <span>Tours & Travel</span></a>
+      
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a id="loginLink" href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+
+      <div class="auth-box">
+        <div id="authEmail" class="auth-email" style="display: none;"></div>
+        <a id="logoutLink" class="auth-logout" href="#" onclick="event.preventDefault(); logout();" style="display: none;">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div>
+          <small>WELCOME TO</small>
+          <h1>SK Tours & Travel</h1>
+          <p>Your trusted partner for comfortable and memorable journeys.</p>
+          <a class="btn" href="search.html">Explore Trips</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container">
+      <h2>Why Choose SK Tours & Travel?</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>🔎 Easy Search</strong>
+          <p>Find available routes quickly.</p>
+        </div>
+        <div class="card">
+          <strong>💺 Seat Selection</strong>
+          <p>Choose your preferred seat.</p>
+        </div>
+        <div class="card">
+          <strong>🎫 Digital Ticket</strong>
+          <p>View and print your ticket easily.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>SK Tours & Travel — Your Journey Starts Here</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>

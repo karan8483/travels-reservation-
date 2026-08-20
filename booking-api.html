@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Ticket - Travel Reservation</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .booking-container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+    .booking-details {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #007bff;
+    }
+    .booking-details h2 {
+      margin-top: 0;
+    }
+    .booking-form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .booking-form input,
+    .booking-form select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .booking-form button {
+      width: 100%;
+      padding: 12px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .booking-form button:hover {
+      background: #218838;
+    }
+    .error-notice {
+      background-color: #fee;
+      border-left: 4px solid #f00;
+      padding: 10px 15px;
+      margin: 10px 0;
+      color: #c33;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <h1>Travel Reservation</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search-api.html">Search</a></li>
+        <li id="loginLink"><a href="login-api.html">Login</a></li>
+        <li id="logoutLink"><a href="#" onclick="logout(); return false;">Logout</a></li>
+        <li id="authEmail" style="display:none;"></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="booking-container">
+      <div id="msg"></div>
+      <div id="routeDetails"></div>
+
+      <div class="booking-form">
+        <h2>Complete Your Booking</h2>
+        <form id="bookingForm">
+          <input type="text" id="passengerName" placeholder="Passenger Name" required>
+          <select id="seatNumber" required>
+            <option value="">Select Seat</option>
+          </select>
+          <button type="submit">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth-api.js"></script>
+  <script src="js/booking-api.js"></script>
+</body>
+</html>

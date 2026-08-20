@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Bookings - Travel Reservation</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .bookings-container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .booking-card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .booking-card.confirmed {
+      border-left: 4px solid #28a745;
+    }
+    .booking-card.cancelled {
+      border-left: 4px solid #dc3545;
+      opacity: 0.7;
+    }
+    .booking-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .booking-header h3 {
+      margin: 0;
+    }
+    .status {
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .status.confirmed {
+      background: #d4edda;
+      color: #155724;
+    }
+    .status.cancelled {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    .booking-details p {
+      margin: 8px 0;
+      color: #666;
+    }
+    .booking-actions {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .no-results {
+      text-align: center;
+      color: #666;
+      padding: 40px;
+    }
+    .error-notice {
+      background-color: #fee;
+      border-left: 4px solid #f00;
+      padding: 10px 15px;
+      margin: 10px 0;
+      color: #c33;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <h1>Travel Reservation</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search-api.html">Search</a></li>
+        <li id="loginLink"><a href="login-api.html">Login</a></li>
+        <li id="logoutLink"><a href="#" onclick="logout(); return false;">Logout</a></li>
+        <li id="authEmail" style="display:none;"></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="bookings-container">
+      <h2>My Bookings</h2>
+      <div id="msg"></div>
+      <div id="bookingsList"></div>
+    </div>
+  </div>
+
+  <script src="js/auth-api.js"></script>
+  <script src="js/bookings-api.js"></script>
+</body>
+</html>
